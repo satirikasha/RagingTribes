@@ -53,16 +53,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Engine\Input\Resize.cs" />
-    <Compile Include="Assets\Scripts\Engine\Settings.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\InputController.cs" />
+    <Compile Include="Assets\Scripts\Engine\Input\Resize.cs" />
+    <Compile Include="Assets\Scripts\Engine\Input\Swipe.cs" />
+    <Compile Include="Assets\Scripts\Engine\Settings.cs" />
+    <Compile Include="Assets\Scripts\Engine\Utils\Ellipse.cs" />
+    <Compile Include="Assets\Scripts\Engine\Utils\Utils.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\ResourcePaths.cs" />
+    <Compile Include="Assets\Scripts\SelectorTool.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
-    <Compile Include="Assets\Scripts\Engine\Utils\Utils.cs" />
-    <Compile Include="Assets\Scripts\Engine\Input\Swipe.cs" />
+    <Compile Include="Assets\Scripts\Tribe.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

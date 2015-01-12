@@ -12,8 +12,8 @@ namespace Engine.Input {
 
 
     public static event Action<Vector2> OnSwipeStart;// координаты нажатия
-    public static event Action<Vector2> OnSwipeMoved;// вектор смещения
-    public static event Action<Vector2,Vector2> OnSwipeEnd;//координаты конца нажатия и вектор смещения в конце
+    public static event Action<Vector2, Vector2> OnSwipeMoved;//координаты и вектор смещения
+    public static event Action<Vector2, Vector2> OnSwipeEnd;//координаты конца нажатия и вектор смещения в конце
 
     public Touch Start { get; private set; }
 
@@ -37,7 +37,7 @@ namespace Engine.Input {
       }
 
       if(nextTouch.phase == TouchPhase.Moved) {
-        OnSwipeMoved(nextTouch.deltaPosition);
+        OnSwipeMoved(nextTouch.position, nextTouch.deltaPosition);
       }
       if(nextTouch.phase == TouchPhase.Ended) {
         var endVector = _RecentTouchesHistory.Select(_ => _.deltaPosition).AverageVector();

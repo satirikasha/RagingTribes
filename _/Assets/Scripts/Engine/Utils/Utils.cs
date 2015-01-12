@@ -19,9 +19,26 @@ namespace Engine.Utils {
       return new Vector3(obj.x, obj.y, 0);
     }
 
+    /// <summary>
+    /// Среднеарифметический вектор
+    /// </summary>
     public static Vector2 AverageVector(this IEnumerable<Vector2> obj) {
       var n = obj.Count();
       return new Vector2(obj.Sum(_ => _.x)/n, obj.Sum(_ => _.y)/n);
+    }
+
+    /// <summary>
+    /// Возведение в квадрат
+    /// </summary>
+    public static float deg2(this float obj){
+      return Mathf.Pow(obj, 2);
+    }
+
+    /// <summary>
+    /// Квадратный корень
+    /// </summary>
+    public static float sqr2(this float obj) {
+      return Mathf.Pow(obj, 0.5f);
     }
   }
 }

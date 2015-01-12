@@ -6,12 +6,17 @@
 
   public class GameManager: MonoBehaviour {
 
-    private GameObject Enviroment;
+    public GameObject Enviroment { get; private set; }
+    public GameObject SelectorTool { get; private set; }
 
+    public bool CameraControlEnabled { get; private set; }
+    private int _CameraBusinesCounter = 0;
+       
     // Use this for initialization
     void Start() {
       PresetCamera();
       LoadEnviroment();
+      LoadSelectorTool();
     }
 
     // Update is called once per frame
@@ -21,19 +26,34 @@
     }
 
     private void PresetCamera() {
-      
+      CameraControlEnabled = true;
 
-      Swipe.OnSwipeMoved += v => {
-        AddDeltaPositionIfAcсeptable(-Settings.CameraMoveNormalize(v).ToVector3());
+      Tribe.OnSelected += t => {
+        if(_CameraBusinesCounter == 0) {
+          _CameraBusinesCounter++;
+          CameraControlEnabled = false;
+        }
+      };
+      Tribe.OnDiselected += t => {
+        if(_CameraBusinesCounter > 0) {
+          CameraControlEnabled = (--_CameraBusinesCounter == 0);
+        }
+      };
+
+      Swipe.OnSwipeMoved += (p, v) => {
+        if(CameraControlEnabled)
+          AddDeltaPositionIfAcсeptable(-Settings.CameraMoveNormalize(v).ToVector3());
       };
       Swipe.OnSwipeEnd += (p, v) => {
-        AddLerpCamera(Settings.CameraMoveNormalize(v));
+        if(CameraControlEnabled)
+          AddLerpCamera(Settings.CameraMoveNormalize(v));
       };
       Swipe.OnSwipeStart += p => {
         _LerpCameraVector = Vector2.zero;
       };
       Resize.OnResizeChanged += q => {
-        AddSizeIfAcсeptable(-q);
+        if(CameraControlEnabled)
+          AddSizeIfAcсeptable(-q);
       };
     }
 
@@ -41,7 +61,14 @@
       Enviroment = new GameObject("Enviroment");
       Enviroment.transform.localScale = new Vector3(Settings.MapWidth, Settings.MapHeight);
       var background = Resources.Load<Sprite>(ResourcePaths.Background);
-      Enviroment.AddComponent<SpriteRenderer>().sprite = background;
+      var spriteRenderer = Enviroment.AddComponent<SpriteRenderer>();
+      spriteRenderer.sprite = background;
+      spriteRenderer.sortingOrder = -10;
+    }
+
+    private void LoadSelectorTool() {
+      SelectorTool = new GameObject("SelectorTool");
+      SelectorTool.AddComponent<SelectorTool>();
     }
 
     private void UpdateCamera() {

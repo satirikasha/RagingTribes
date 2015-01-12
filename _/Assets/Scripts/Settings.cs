@@ -20,5 +20,11 @@ namespace RagingTribes {
     public static Func<Vector2,Vector2> CameraMoveNormalize = _ => { // нормирующая формула для сдвига камеры
       return _ * (Camera.main.orthographicSize / Settings.CameraMoveNormCoef);
     };
+
+    //Tribe
+    public const float TribeWidth = 150;
+    public const float TribeHeight = 80;
+    public const float SelectionLineWidth = 5;
+    public const float EllipseOffsetY = -5;
   }
 }
