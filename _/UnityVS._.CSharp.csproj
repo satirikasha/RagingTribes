@@ -53,18 +53,53 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AI\AI_Player.cs" />
+    <Compile Include="Assets\Scripts\AI\AI_Settings.cs" />
+    <Compile Include="Assets\Scripts\AI\DelayedAction.cs" />
+    <Compile Include="Assets\Scripts\AI\GameSituation.cs" />
+    <Compile Include="Assets\Scripts\AI\MoveHistoryRecord.cs" />
+    <Compile Include="Assets\Scripts\AI\Strategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\InputController.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\Resize.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\Swipe.cs" />
+    <Compile Include="Assets\Scripts\Engine\Input\Tap.cs" />
+    <Compile Include="Assets\Scripts\Engine\Interface\IContainer.cs" />
+    <Compile Include="Assets\Scripts\Engine\Interface\IHasContainer.cs" />
+    <Compile Include="Assets\Scripts\Engine\Interface\IHasPoint.cs" />
+    <Compile Include="Assets\Scripts\Engine\Pathfinding\PriorityQueue.cs" />
+    <Compile Include="Assets\Scripts\Engine\Pathfinding\SpatialAStar.cs" />
     <Compile Include="Assets\Scripts\Engine\Settings.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\Ellipse.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\Utils.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Gameplay.Settings.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Race.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\Pathfinding\Node.cs" />
+    <Compile Include="Assets\Scripts\Pathfinding\NodeGrid.cs" />
+    <Compile Include="Assets\Scripts\Pathfinding\Pathfinder.cs" />
     <Compile Include="Assets\Scripts\ResourcePaths.cs" />
-    <Compile Include="Assets\Scripts\SelectorTool.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
-    <Compile Include="Assets\Scripts\Tribe.cs" />
+    <Compile Include="Assets\Scripts\Tibe\Tribe.Relations.cs" />
+    <Compile Include="Assets\Scripts\Tibe\Tribe.cs" />
+    <Compile Include="Assets\Scripts\Tibe\TroopsFactory.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\Crowd.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\GameObgects\Archer_GO.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\GameObgects\Cavalier_GO.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\GameObgects\Giant_GO.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\GameObgects\Warrior_GO.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\Instances\Archer.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\Instances\Cavalier.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\Instances\Giant.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\Instances\Warrior.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\Troops.base.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\Troops.state.cs" />
+    <Compile Include="Assets\Scripts\Units\Troops\Troops.type.cs" />
+    <Compile Include="Assets\Scripts\Widgets\SelectorTool.cs" />
+    <Compile Include="Assets\Scripts\Widgets\SliderWidget.cs" />
+    <Compile Include="Assets\Scripts\Widgets\TroopWidget.cs" />
+    <None Include="Assets\Resources\Materials#Shaders\TroopWidget.shader" />
+    <None Include="Assets\Scripts\FoundBugs.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

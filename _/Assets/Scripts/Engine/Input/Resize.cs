@@ -1,5 +1,4 @@
-﻿#if UNITY_ANDROID
-namespace Engine.Input {
+﻿namespace Engine.Input {
   using System;
   using System.Collections.Generic;
   using System.Linq;
@@ -32,4 +31,3 @@ namespace Engine.Input {
     }
   }
 }
-#endif

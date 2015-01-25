@@ -1,5 +1,5 @@
 ﻿namespace Engine.Utils {
-  using System;
+  using Engine.Interface;
   using System.Collections.Generic;
   using System.Linq;
   using System.Text;
@@ -9,7 +9,7 @@
   /// Элипс
   /// </summary>
   /// Формула: ((x - Center.x) / (Width / 2)) ^ 2 + ((y - Center.y) / (Height / 2)) ^ 2 = 1
-  public class Ellipse {
+  public class Ellipse: IContainer {
 
     public Vector2 Center { get; set; }
     public float Width { get; set; }
@@ -31,6 +31,17 @@
       return ((point.x - Center.x) / (Width / 2)).deg2() + ((point.y - Center.y) / (Height / 2)).deg2() <= 1;
     }
 
+    public Vector2 GetRandomPoint() {
+      return GetRandomDelta() + Center;
+    }
+
+    public Vector2 GetRandomDelta() {
+      var X = Random.Range(-Width / 2, Width / 2);
+      var Ymax = ((Height / 2).deg2() - (Height / 2).deg2() * X.deg2() / (Width / 2).deg2()).sqr2();
+      var Y = Random.Range(-Ymax, Ymax);
+      return new Vector2(X, Y);
+    }
+
     /// <summary>
     /// Находит ближайшую точку, лежащую на прямой между центром эллипса и исходной точкой
     /// </summary>
@@ -48,8 +59,8 @@
       var D = b.deg2() - 4 * a * c;
       if(D < 0)
         return Vector2.zero;
-      var x1 = (-b - D.sqr2())/(2*a);
-      var x2 = (-b + D.sqr2())/(2*a);
+      var x1 = (-b - D.sqr2()) / (2 * a);
+      var x2 = (-b + D.sqr2()) / (2 * a);
       var y1 = k * x1 + m;
       var y2 = k * x2 + m;
       var v1 = new Vector2(x1, y1);

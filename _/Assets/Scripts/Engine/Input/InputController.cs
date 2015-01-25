@@ -1,5 +1,4 @@
-﻿#if UNITY_ANDROID
-namespace Engine.Input {
+﻿namespace Engine.Input {
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +45,12 @@ using UnityEngine;
           CurrentResize.Update(touch1, touch2);
         }
       }
+      foreach(Touch touch in Input.touches) {
+        switch(touch.phase) {
+          case TouchPhase.Began: { Tap.Start(touch.position); } break;
+          case TouchPhase.Ended: { Tap.End(touch.position); } break;
+        }
+      }
     }
   }
 }
-#endif
